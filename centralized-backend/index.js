@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const web3_1 = __importDefault(require("web3"));
 const abi_1 = require("./abi");
 const providerUrl = "wss://eth-goerli.g.alchemy.com/v2/u4LDb5PsjbhInoG7S5LHLHzYe85f2pU1";
-const contractAddress = "0x83cdb6ed4915be70805afb3dfeba6a1a677d1bfb";
+const contractAddress = "0x83cdb6ed4915be70805afb3dfeba6a1a677d1bfb";    // RPC Url 
 const webhookUrl = "https://your-dummy-fetch-url";
 const web3 = new web3_1.default(new web3_1.default.providers.WebsocketProvider(providerUrl));
 const contract = new web3.eth.Contract(abi_1.abi, contractAddress);
