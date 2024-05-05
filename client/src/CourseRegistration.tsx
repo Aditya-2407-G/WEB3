@@ -21,7 +21,7 @@ export const CourseRegistration = ({web3, courseContract, courseFee}) => {
 
     return (
         <div>
-            Buy course
+            Buy 
             <br/>
             <h1>Course Registration</h1>
             <p>Course Fee: {courseFee} ETH</p>
