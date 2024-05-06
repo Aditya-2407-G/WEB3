@@ -10,7 +10,7 @@
 
 -> A admin route where the email id's of the peopel who have transfered their funds is shown.
 
--> Testnet:  https://sepolia.etherscan.io/
+-> Testnet:  https://sepolia.etherscan.io/address/0x1a1F655c9f3da5384A1cDB6C68c10F4B62D89f11
 
 -> Contract Address: 0x1a1F655c9f3da5384A1cDB6C68c10F4B62D89f11
 
