@@ -117,4 +117,5 @@ contract CourseRegistration is Ownable {
     function getAllPayments() public view returns (Payment[] memory) {
         return payments;
     }
+
 }
