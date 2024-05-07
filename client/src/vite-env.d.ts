@@ -7,5 +7,4 @@ interface Window {
 
 interface Payment {
     email: string;
-    // Add other properties if needed
 }
