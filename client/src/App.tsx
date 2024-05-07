@@ -6,7 +6,7 @@ import { Admin } from "./Admin";
 import { FundMeRegistration } from "./FundMeRegistration";
 
 function App() {
-    const [web3, setWeb3] = useState<Web3 | null>(null);
+    const [web3, setWeb3] = useState(null);
     const [fundMeContract, setFundMeContract] = useState<any>(null);
     const [fundFee, setFundFee] = useState(null);
     const contractAddress = "0x66E5367B422977338C6088D21C7577e907176693"
@@ -22,7 +22,7 @@ function App() {
                     setFundMeContract(fundMeInstance);
 
                     fundMeInstance.methods.courseFee().call()
-                     //@ts-ignore   
+                    //@ts-ignore   
                     .then(fee => {
                             //@ts-ignore
                             setFundFee(web3Instance.utils.fromWei(fee, 'ether'));
