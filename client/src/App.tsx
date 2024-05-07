@@ -15,6 +15,7 @@ function App() {
         if (window.ethereum) {
             window.ethereum.request({ method: 'eth_requestAccounts' })
                 .then(() => {
+                    //@ts-ignore
                     const web3Instance = new Web3(window.ethereum);
                     setWeb3(web3Instance);
 
