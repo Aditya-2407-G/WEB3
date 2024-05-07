@@ -22,7 +22,7 @@ export const CourseRegistration = ({web3, courseContract, courseFee} : any) => {
     return (
         <div>
             <br/>
-            <h1>Registration</h1>
+            <h1>Fund Me</h1>
             <p>Fee: {courseFee} ETH</p>
             <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <button onClick={payForCourse}>Fund</button>
