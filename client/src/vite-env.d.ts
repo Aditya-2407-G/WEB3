@@ -6,5 +6,5 @@ interface Window {
 }
 
 interface Payment {
-    email: string;
+    name: string;
 }
