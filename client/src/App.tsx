@@ -15,6 +15,7 @@ function App() {
         if (window.ethereum) {
             window.ethereum.request({ method: 'eth_requestAccounts' })
                 .then(() => {
+                    //@ts-ignore
                     const web3Instance = new Web3(window.ethereum);
                     setWeb3(web3Instance);
 
@@ -22,11 +23,12 @@ function App() {
                     setCourseContract(courseInstance);
 
                     courseInstance.methods.courseFee().call()
+                    //@ts-ignore
                         .then(fee => {
                             setCourseFee(web3Instance.utils.fromWei(fee, 'ether'));
                         });
                 })
-                .catch(err => {
+                .catch((err: any) => {
                     // Handle error if the user rejects the connection request
                     console.error(err);
                 });

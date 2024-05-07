@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export const CourseRegistration = ({web3, courseContract, courseFee}) => {
+export const CourseRegistration = ({web3, courseContract, courseFee} : any) => {
     const [email, setEmail] = useState('');
 
     const payForCourse = async () => {
@@ -8,20 +8,19 @@ export const CourseRegistration = ({web3, courseContract, courseFee}) => {
 
         const accounts = await web3.eth.getAccounts();
         courseContract.methods.payForCourse(email).send({ from: accounts[0], value: web3.utils.toWei(courseFee, 'ether') })
-            .on('transactionHash', hash => {
+            .on('transactionHash', (hash: any) => {
                 console.log('Transaction hash:', hash);
             })
-            .on('receipt', receipt => {
+            .on('receipt', (receipt: any) => {
                 console.log('Transaction successful:', receipt);
             })
-            .on('error', error => {
+            .on('error', (error: any) => {
                 console.error('Error:', error);
             });
     };
 
     return (
         <div>
-            Fund For Use
             <br/>
             <h1>Registration</h1>
             <p>Fee: {courseFee} ETH</p>
@@ -30,3 +29,13 @@ export const CourseRegistration = ({web3, courseContract, courseFee}) => {
         </div>
     );
 };
+
+
+
+
+
+
+
+
+
+

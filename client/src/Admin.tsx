@@ -1,15 +1,15 @@
 import {useEffect, useState} from "react";
 
 
-export function Admin({web3, courseContract}) {
-    const [payments, setPayments] = useState([]);
+export function Admin({web3, courseContract}: any) {
+    const [payments, setPayments] = useState<Payment[]>([]);
 
     const init = () => {
         if (!web3 || !courseContract) return;
         console.log(courseContract.methods.payments);
 
         courseContract.methods.getAllPayments().call()
-            .then(values => {
+            .then((values: Payment[]) => {
                 setPayments(values)
             });
     }
