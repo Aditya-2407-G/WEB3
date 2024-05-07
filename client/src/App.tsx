@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { contractABI } from "./abi";
 import { Admin } from "./Admin";
 import { FundMeRegistration } from "./FundMeRegistration";
-import Web3 from 'web3';
 
 function App() {
     const [web3, setWeb3] = useState<Web3 | null>(null);
@@ -23,6 +22,7 @@ function App() {
                     setFundMeContract(fundMeInstance);
 
                     fundMeInstance.methods.courseFee().call()
+                     //@ts-ignore   
                     .then(fee => {
                             //@ts-ignore
                             setFundFee(web3Instance.utils.fromWei(fee, 'ether'));
