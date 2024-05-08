@@ -51,7 +51,7 @@ contract FundMe is Ownable {
         uint256 amount;
     }
 
-    constructor() Ownable() {}
+    // constructor() Ownable() {}
 
     function fund(string memory name) public payable {
         require(msg.value > 0, "Amount must be greater than 0");
