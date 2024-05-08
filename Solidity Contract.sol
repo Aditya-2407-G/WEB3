@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: UNLICENSED
+
 pragma solidity ^0.8.0;
 
 contract Ownable {
@@ -5,87 +7,57 @@ contract Ownable {
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    /**
-     * Initializes the contract setting the address provided by the deployer as the initial owner.
-     */
-    constructor(address initialOwner) {
-        _transferOwnership(initialOwner);
+    constructor() {
+        _transferOwnership(msg.sender);
     }
 
-    /**
-     * Throws if called by any account other than the owner.
-     */
     modifier onlyOwner() {
         _checkOwner();
         _;
     }
 
-    /**
-     * Returns the address of the current owner.
-     */
-    function owner() public view virtual returns (address) {
+    function owner() public view returns (address) {
         return _owner;
     }
 
-    /**
-     * Throws if the sender is not the owner.
-     */
-    function _checkOwner() internal view virtual {
-        require(owner() == msg.sender);
+    function _checkOwner() internal view {
+        require(owner() == msg.sender, "Caller is not the owner");
     }
 
-    /**
-     * Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions. Can only be called by the current owner.
-     *
-     * Renouncing ownership will leave the contract without an owner,
-     * thereby disabling any functionality that is only available to the owner.
-     */
     function renounceOwnership() public virtual onlyOwner {
         _transferOwnership(address(0));
     }
 
-    /**
-     * Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(owner() == msg.sender);
+        require(newOwner != address(0), "New owner is the zero address");
         _transferOwnership(newOwner);
     }
 
-    /**
-     * Transfers ownership of the contract to a new account (`newOwner`).
-     * Internal function without access restriction.
-     */
     function _transferOwnership(address newOwner) internal virtual {
-        address oldOwner = _owner;
+        emit OwnershipTransferred(_owner, newOwner);
         _owner = newOwner;
-        emit OwnershipTransferred(oldOwner, newOwner);
     }
 }
 
-
-contract CourseRegistration is Ownable {
-    uint256 public courseFee;
+contract FundMe is Ownable {
+    uint256 public totalFunds;
     Payment[] public payments;
 
-    event PaymentReceived(address indexed user, string email, uint256 amount);
+    event PaymentReceived(address indexed user, string name, uint256 amount);
 
     struct Payment {
         address user;
-        string email;
+        string name;
         uint256 amount;
     }
 
-    constructor(uint256 _courseFee) Ownable(msg.sender) {
-        courseFee = _courseFee;
-    }
+    constructor() Ownable() {}
 
-    function payForCourse(string memory email) public payable {
-        require(msg.value == courseFee, "Payment must be equal to the course fee");
-        payments.push(Payment(msg.sender, email, msg.value));
-        emit PaymentReceived(msg.sender, email, msg.value);
+    function fund(string memory name) public payable {
+        require(msg.value > 0, "Amount must be greater than 0");
+        totalFunds += msg.value;
+        payments.push(Payment(msg.sender, name , msg.value));
+        emit PaymentReceived(msg.sender, name , msg.value);
     }
 
     function withdrawFunds() public onlyOwner {
@@ -117,5 +89,4 @@ contract CourseRegistration is Ownable {
     function getAllPayments() public view returns (Payment[] memory) {
         return payments;
     }
-
 }
