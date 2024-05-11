@@ -8,7 +8,6 @@ import { FundMeRegistration } from "./FundMeRegistration";
 function App() {
     const [web3, setWeb3] = useState(null);
     const [fundMeContract, setFundMeContract] = useState<any>(null);
-    const [fundFee, setFundFee] = useState(null);
     const contractAddress = "0x66E5367B422977338C6088D21C7577e907176693"
 
     useEffect(() => {
@@ -22,12 +21,6 @@ function App() {
                     const fundMeInstance = new web3Instance.eth.Contract(contractABI, contractAddress);
                     setFundMeContract(fundMeInstance);
 
-                    fundMeInstance.methods.courseFee().call()
-                    //@ts-ignore   
-                    .then(fee => {
-                            //@ts-ignore
-                            setFundFee(web3Instance.utils.fromWei(fee, 'ether'));
-                        });
                 })
                 .catch((err: any) => {
                     console.error(err);
@@ -40,7 +33,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<FundMeRegistration web3={web3} fundMeContract={fundMeContract} fundFee = {fundFee} />} />
+                <Route index element={<FundMeRegistration web3={web3} fundMeContract={fundMeContract} />} />
                 <Route path="admin" element={<Admin web3={web3} fundMeContract={fundMeContract} />} />
             </Routes>
         </BrowserRouter>
