@@ -8,7 +8,7 @@
 
 -> A client side front end where one can come and transfer any amount of funds they wish to the owner.
 
--> A admin route where the names of the peopel who have transfered their funds is shown.
+-> A Total Fund route where the names of the peopel who have transfered their funds is shown.
 
 -> Testnet:  https://sepolia.etherscan.io/address/0x66e5367b422977338c6088d21c7577e907176693
 
