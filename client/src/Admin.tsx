@@ -28,7 +28,7 @@ export function Admin({ web3, fundMeContract }: any) {
   return (
     <>
       <h1 className="text-4xl font-bold mb-4 text-center text-gray-800">
-        Admin Panel
+        Total Support 
       </h1>
 
       <h2 className="text-lg font-semibold mb-6 text-center text-gray-600">
