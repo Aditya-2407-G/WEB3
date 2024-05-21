@@ -8,7 +8,7 @@ import { FundMeRegistration } from "./FundMeRegistration";
 function App() {
     const [web3, setWeb3] = useState(null);
     const [fundMeContract, setFundMeContract] = useState<any>(null);
-    const contractAddress = "0x66E5367B422977338C6088D21C7577e907176693"
+    const contractAddress = "0x66E5367B422977338C6088D21C7577e907176693";
 
     useEffect(() => {
         if (window.ethereum) {
@@ -20,7 +20,6 @@ function App() {
 
                     const fundMeInstance = new web3Instance.eth.Contract(contractABI, contractAddress);
                     setFundMeContract(fundMeInstance);
-
                 })
                 .catch((err: any) => {
                     console.error(err);

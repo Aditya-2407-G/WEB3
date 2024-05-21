@@ -7,4 +7,6 @@ interface Window {
 
 interface Payment {
     name: string;
+    amount: string;
+    description: string;
 }
