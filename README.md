@@ -14,8 +14,9 @@
 
  # Images 
  
- Patrons-  https://github.com/Aditya-2407-G/WEB3/assets/92910224/9448855f-7963-4f99-9359-ac1cb29518be
-Landing Page - https://github.com/Aditya-2407-G/WEB3/assets/92910224/ae453e03-a0fd-41e6-903b-d06ee2ba26e7
+ -> Patrons-  https://github.com/Aditya-2407-G/WEB3/assets/92910224/9448855f-7963-4f99-9359-ac1cb29518be
+ 
+ ->  Landing Page - https://github.com/Aditya-2407-G/WEB3/assets/92910224/ae453e03-a0fd-41e6-903b-d06ee2ba26e7
 
 
 
