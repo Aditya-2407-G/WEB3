@@ -25,7 +25,7 @@ function App() {
                     console.error(err);
                 });
         } else {
-            alert('Please install another Ethereum wallet.');
+            alert('Please connect to a Ethereum wallet! Patrons will be visible only when connected to a wallet.');
         }
     }, []);
 
